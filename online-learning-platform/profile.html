@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="View and edit your LearnSphere profile, password, and learning statistics.">
+  <title>My Profile - LearnSphere</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="images/logo.png">
+</head>
+<body data-page="profile">
+
+  <!-- ========== Header ========== -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="../images/Stackly_logo.png" alt="Stackly" class="brand-logo">
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="courses.html">Courses</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-outline btn-sm">Login</a>
+        <a href="#" class="btn btn-danger btn-sm logout-btn">Logout</a>
+        <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="courses.html">Courses</a>
+    <a href="login.html">Login</a>
+    <a href="#" class="logout-btn">Logout</a>
+    <hr>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- ========== Page Header ========== -->
+  <section class="page-header">
+    <div class="container">
+      <h1>My Profile</h1>
+      <p>Manage your account information and settings</p>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <a href="dashboard.html">Dashboard</a>
+        <span>/</span>
+        <span class="current">Profile</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Profile Content ========== -->
+  <section class="profile-page">
+    <div class="container">
+      <div class="profile-layout">
+        <!-- Profile Sidebar -->
+        <aside class="profile-sidebar">
+          <div class="profile-avatar" id="profile-avatar" style="background: linear-gradient(135deg, var(--primary), #7c3aed);">S</div>
+          <h3 id="profile-name">Student</h3>
+          <div class="email" id="profile-email">student@email.com</div>
+          <p class="bio" id="profile-bio">Passionate learner on LearnSphere</p>
+          <div class="profile-stats-row">
+            <div class="profile-stat">
+              <span class="value">0</span>
+              <span class="label">Enrolled</span>
+            </div>
+            <div class="profile-stat">
+              <span class="value">0</span>
+              <span class="label">Completed</span>
+            </div>
+            <div class="profile-stat">
+              <span class="value">0</span>
+              <span class="label">Hours</span>
+            </div>
+          </div>
+          <a href="dashboard.html" class="btn btn-outline btn-block">Go to Dashboard</a>
+        </aside>
+
+        <!-- Profile Content -->
+        <div class="profile-content">
+          <!-- Edit Profile -->
+          <div class="profile-card">
+            <h3>Edit Profile</h3>
+            <form id="profile-edit-form" class="profile-form" novalidate>
+              <div class="form-group">
+                <label for="edit-name">Full Name</label>
+                <input type="text" id="edit-name" placeholder="Enter your full name">
+              </div>
+              <div class="form-group">
+                <label for="edit-email">Email Address</label>
+                <input type="email" id="edit-email" placeholder="you@example.com">
+              </div>
+              <div class="form-group">
+                <label for="edit-bio">Bio</label>
+                <textarea id="edit-bio" rows="4" placeholder="Tell us a little about yourself and your learning goals..."></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Save Changes</button>
+            </form>
+          </div>
+
+          <!-- Change Password -->
+          <div class="profile-card">
+            <h3>Change Password</h3>
+            <form id="password-form" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="current-password">Current Password</label>
+                  <input type="password" id="current-password" placeholder="Enter current password" autocomplete="current-password">
+                </div>
+                <div class="form-group">
+                  <label for="new-password">New Password</label>
+                  <input type="password" id="new-password" placeholder="Minimum 6 characters" autocomplete="new-password">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="confirm-new-password">Confirm New Password</label>
+                <input type="password" id="confirm-new-password" placeholder="Re-enter new password" autocomplete="new-password">
+              </div>
+              <button type="submit" class="btn btn-outline">Update Password</button>
+            </form>
+          </div>
+
+          <!-- Completed Courses -->
+          <div class="profile-card">
+            <h3>Completed Courses</h3>
+            <p style="margin-bottom: 20px;">Courses you've successfully completed on LearnSphere.</p>
+            <div id="completed-courses-list">
+              <a href="courses.html" class="btn btn-outline btn-sm">Browse Courses</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Footer ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+          <img src="../images/Stackly_logo.png" alt="Stackly" class="brand-logo">
+          </a>
+          <p>Empowering learners worldwide with high-quality education.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14 8h3V4h-3c-3.3 0-5 1.7-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.7.3-1 1-1z"/></svg></a>
+            <a href="#" aria-label="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.2 3H21l-6.1 7 7.2 11h-5.6l-4.4-6.7L6.2 21H3.4l6.6-7.5L3 3h5.7l4 6.1L18.2 3zm-1 16h1.6L7 4.9H5.3L17.2 19z"/></svg></a>
+            <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5 3.5A2.5 2.5 0 1 1 5 8a2.5 2.5 0 0 1 0-4.5zM3 9h4v12H3V9zm6 0h3.8v1.6h.1c.5-.9 1.8-2 3.8-2 4 0 4.3 2.6 4.3 6v6.4h-4v-5.7c0-1.4 0-3.2-2-3.2s-2.3 1.5-2.3 3.1V21H9V9z"/></svg></a>
+            <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.6 15.8V8.2l6.4 3.8-6.4 3.8z"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Categories</h4>
+          <ul>
+            <li><a href="courses.html">Web Development</a></li>
+            <li><a href="courses.html">Programming</a></li>
+            <li><a href="courses.html">Data Science</a></li>
+            <li><a href="courses.html">Design</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="contact.html">Help Center</a></li>
+            <li><a href="login.html">Student Login</a></li>
+            <li><a href="register.html">Create Account</a></li>
+            <li><a href="contact.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 LearnSphere. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Terms</a>
+          <a href="#">Privacy</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="Back to top">↑</button>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LearnSphere - Online learning platform offering courses in web development, data science, design, and more.">
+  <title>LearnSphere - Learn New Skills Online</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="images/logo.png">
+</head>
+<body data-page="home">
+
+  <!-- ========== Header ========== -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="../images/Stackly_logo.png" alt="Stackly" class="brand-logo">
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html" class="active">Home</a>
+        <a href="courses.html">Courses</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <div class="guest-only">
+          <a href="register.html" class="btn btn-outline btn-sm">Register</a>
+          <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+        </div>
+        <div class="auth-only">
+          <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+        </div>
+        <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <a href="index.html" class="active">Home</a>
+    <a href="courses.html">Courses</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <hr>
+    <div class="guest-only">
+      <a href="login.html" class="btn btn-primary btn-block">Login</a>
+      <a href="register.html" class="btn btn-outline btn-block">Register</a>
+    </div>
+    <div class="auth-only">
+      <a href="login.html" class="btn btn-primary btn-block">Login</a>
+    </div>
+  </div>
+
+  <!-- ========== Hero ========== -->
+  <section class="hero" id="about">
+    <div class="container">
+      <div class="hero-content">
+        <span class="section-badge" style="background: rgba(255,255,255,0.15); color: #fff;">🎓 #1 Online Learning Platform</span>
+        <h1>Learn New Skills.<span>Build Your Future.</span></h1>
+        <p>Join thousands of learners mastering the skills they need to succeed in today's world. Expert-led courses in technology, design, marketing, and more.</p>
+        <div class="hero-buttons">
+          <a href="courses.html" class="btn btn-primary btn-lg">Explore Courses →</a>
+          <a href="register.html" class="btn btn-secondary btn-lg">Start Learning</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="number" data-count="120">0</span><span class="number">K+</span>
+            <span class="label">Students</span>
+          </div>
+          <div class="hero-stat">
+            <span class="number" data-count="500">0</span><span class="number">+</span>
+            <span class="label">Courses</span>
+          </div>
+          <div class="hero-stat">
+            <span class="number" data-count="50">0</span><span class="number">+</span>
+            <span class="label">Instructors</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="hero-image-placeholder">
+          <span>🎓</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Categories ========== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Categories</span>
+        <h2>Explore Our Categories</h2>
+        <p>Discover a wide range of topics taught by industry experts</p>
+      </div>
+      <div class="categories-grid">
+        <div class="category-card">
+          <div class="category-icon" style="background: #eff6ff; color: #3b82f6;">💻</div>
+          <h4>Web Development</h4>
+          <p>15+ courses</p>
+        </div>
+        <div class="category-card">
+          <div class="category-icon" style="background: #fef3c7; color: #d97706;">🐍</div>
+          <h4>Programming</h4>
+          <p>12+ courses</p>
+        </div>
+        <div class="category-card">
+          <div class="category-icon" style="background: #dcfce7; color: #16a34a;">📊</div>
+          <h4>Data Science</h4>
+          <p>8+ courses</p>
+        </div>
+        <div class="category-card">
+          <div class="category-icon" style="background: #fce7f3; color: #db2777;">🎨</div>
+          <h4>Design</h4>
+          <p>10+ courses</p>
+        </div>
+        <div class="category-card">
+          <div class="category-icon" style="background: #fef2f2; color: #dc2626;">📱</div>
+          <h4>Marketing</h4>
+          <p>9+ courses</p>
+        </div>
+        <div class="category-card">
+          <div class="category-icon" style="background: #f0fdfa; color: #0d9488;">🌐</div>
+          <h4>Business</h4>
+          <p>14+ courses</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Popular Courses ========== -->
+  <section class="section" style="background: var(--card-bg);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Popular Courses</span>
+        <h2>Most Popular Courses</h2>
+        <p>Handpicked courses loved by thousands of students</p>
+      </div>
+      <div class="courses-grid" id="popular-courses"></div>
+      <div style="text-align:center; margin-top: 40px;">
+        <a href="courses.html" class="btn btn-outline btn-lg">View All Courses →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Why Choose Us ========== -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Why Choose Us</span>
+        <h2>Why Students Love LearnSphere</h2>
+        <p>We are committed to providing the best learning experience</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon" style="background: #eff6ff; color: #3b82f6;">🎓</div>
+          <h4>Expert Instructors</h4>
+          <p>Learn from industry professionals with years of real-world experience teaching you practical, job-ready skills.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background: #fef3c7; color: #d97706;">📚</div>
+          <h4>Comprehensive Curriculum</h4>
+          <p>Structured courses with progressive modules, hands-on projects, and complete learning paths in every subject.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background: #dcfce7; color: #16a34a;">⏱️</div>
+          <h4>Learn at Your Pace</h4>
+          <p>Access course material 24/7 and learn at your own speed. Lifetime access to all purchased courses.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background: #fce7f3; color: #db2777;">🏆</div>
+          <h4>Verified Certificates</h4>
+          <p>Earn recognized certificates of completion that showcase your new skills to employers and peers.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background: #fef2f2; color: #dc2626;">🤝</div>
+          <h4>Community Support</h4>
+          <p>Join a vibrant community of learners. Get help from instructors and collaborate with fellow students.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background: #f0fdfa; color: #0d9488;">💼</div>
+          <h4>Career Focused</h4>
+          <p>Our courses are designed to help you land better jobs with practical skills and portfolio projects.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background: #f5f3ff; color: #7c3aed;">🛠️</div>
+          <h4>Hands-on Projects</h4>
+          <p>Build practical projects that strengthen your portfolio and help you apply every skill with confidence.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background: #ecfeff; color: #0891b2;">🔄</div>
+          <h4>Updated Learning</h4>
+          <p>Stay current with regularly updated lessons, modern tools, and industry practices that keep your skills relevant.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Statistics ========== -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-number" data-count="120" data-suffix="K+">0</span>
+          <span class="stat-label">Active Students</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" data-count="500" data-suffix="+">0</span>
+          <span class="stat-label">Online Courses</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" data-count="50" data-suffix="+">0</span>
+          <span class="stat-label">Expert Instructors</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" data-count="98" data-suffix="%">0</span>
+          <span class="stat-label">Satisfaction Rate</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Top Instructors ========== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Top Instructors</span>
+        <h2>Meet Our Expert Instructors</h2>
+        <p>Industry professionals dedicated to your success</p>
+      </div>
+      <div class="instructors-grid">
+        <div class="instructor-card">
+          <div class="instructor-photo" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">SJ</div>
+          <h4>Sarah Johnson</h4>
+          <div class="specialty">Web Development</div>
+          <p>Full-stack developer with 10+ years experience</p>
+          <div class="instructor-stats">
+            <span>⭐ 4.8</span>
+            <span>👥 12.5K</span>
+            <span>📚 8</span>
+          </div>
+        </div>
+        <div class="instructor-card">
+          <div class="instructor-photo" style="background: linear-gradient(135deg, #06b6d4, #3b82f6);">MC</div>
+          <h4>Michael Chen</h4>
+          <div class="specialty">JavaScript</div>
+          <p>Frontend architect and JavaScript expert</p>
+          <div class="instructor-stats">
+            <span>⭐ 4.7</span>
+            <span>👥 15.8K</span>
+            <span>📚 12</span>
+          </div>
+        </div>
+        <div class="instructor-card">
+          <div class="instructor-photo" style="background: linear-gradient(135deg, #10b981, #059669);">ER</div>
+          <h4>Dr. Emily Rodriguez</h4>
+          <div class="specialty">Python & AI</div>
+          <p>PhD in Computer Science, AI researcher</p>
+          <div class="instructor-stats">
+            <span>⭐ 4.9</span>
+            <span>👥 23.4K</span>
+            <span>📚 15</span>
+          </div>
+        </div>
+        <div class="instructor-card">
+          <div class="instructor-photo" style="background: linear-gradient(135deg, #f59e0b, #f43f5e);">LP</div>
+          <h4>Lisa Park</h4>
+          <div class="specialty">UI/UX Design</div>
+          <p>Senior product designer, ex-FAANG</p>
+          <div class="instructor-stats">
+            <span>⭐ 4.8</span>
+            <span>👥 8.9K</span>
+            <span>📚 6</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Testimonials ========== -->
+  <section class="section" style="background: var(--card-bg);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Testimonials</span>
+        <h2>What Our Students Say</h2>
+        <p>Real stories from real learners</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-quote">"</div>
+          <div class="testimonial-stars">★★★★★</div>
+          <p>LearnSphere completely transformed my career. I went from zero coding experience to landing a frontend developer job in 6 months. The courses are incredibly well-structured.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background: #6366f1;">JD</div>
+            <div class="testimonial-author-info">
+              <h5>James Anderson</h5>
+              <span>Web Developer</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-quote">"</div>
+          <div class="testimonial-stars">★★★★★</div>
+          <p>The instructors are amazing! They explain complex topics in a way that's easy to understand. The Python course helped me transition into data science. Highly recommend!</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background: #0ea5e9;">SM</div>
+            <div class="testimonial-author-info">
+              <h5>Sophia Martinez</h5>
+              <span>Data Analyst</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-quote">"</div>
+          <div class="testimonial-stars">★★★★★</div>
+          <p>I've tried many platforms but LearnSphere stands out. The UI/UX design course was worth every penny. I got hired as a product designer right after completing it.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background: #f59e0b;">DT</div>
+            <div class="testimonial-author-info">
+              <h5>David Thompson</h5>
+              <span>Product Designer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA Section ========== -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Ready to Start Your Learning Journey?</h2>
+      <p>Join over 120,000 students already learning on LearnSphere. Your future self will thank you.</p>
+      <div class="cta-buttons">
+        <a href="register.html" class="btn btn-primary btn-lg">Create Free Account</a>
+        <a href="courses.html" class="btn btn-secondary btn-lg">Browse Courses</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Footer ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+          <img src="../images/Stackly_logo.png" alt="Stackly" class="brand-logo">
+          </a>
+          <p>Empowering learners worldwide with high-quality education. Start learning today and build the skills for tomorrow.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14 8h3V4h-3c-3.3 0-5 1.7-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.7.3-1 1-1z"/></svg></a>
+            <a href="#" aria-label="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.2 3H21l-6.1 7 7.2 11h-5.6l-4.4-6.7L6.2 21H3.4l6.6-7.5L3 3h5.7l4 6.1L18.2 3zm-1 16h1.6L7 4.9H5.3L17.2 19z"/></svg></a>
+            <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5 3.5A2.5 2.5 0 1 1 5 8a2.5 2.5 0 0 1 0-4.5zM3 9h4v12H3V9zm6 0h3.8v1.6h.1c.5-.9 1.8-2 3.8-2 4 0 4.3 2.6 4.3 6v6.4h-4v-5.7c0-1.4 0-3.2-2-3.2s-2.3 1.5-2.3 3.1V21H9V9z"/></svg></a>
+            <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.6 15.8V8.2l6.4 3.8-6.4 3.8z"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Categories</h4>
+          <ul>
+            <li><a href="courses.html">Web Development</a></li>
+            <li><a href="courses.html">Programming</a></li>
+            <li><a href="courses.html">Data Science</a></li>
+            <li><a href="courses.html">Design</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="contact.html">Help Center</a></li>
+            <li><a href="login.html">Student Login</a></li>
+            <li><a href="register.html">Create Account</a></li>
+            <li><a href="contact.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 LearnSphere. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Terms</a>
+          <a href="#">Privacy</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="Back to top">↑</button>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

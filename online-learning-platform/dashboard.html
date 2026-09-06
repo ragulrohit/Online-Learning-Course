@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Your LearnSphere student dashboard - track your courses, progress, and certificates.">
+  <title>Dashboard - LearnSphere</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="images/logo.png">
+</head>
+<body data-page="dashboard">
+
+  <!-- ========== Header ========== -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="../images/Stackly_logo.png" alt="Stackly" class="brand-logo">
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="courses.html">Courses</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="profile.html" class="btn btn-outline btn-sm">Profile</a>
+        <a href="#" class="btn btn-danger btn-sm logout-btn">Logout</a>
+        <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="courses.html">Courses</a>
+    <a href="profile.html">Profile</a>
+    <a href="#" class="logout-btn">Logout</a>
+    <hr>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- ========== Dashboard ========== -->
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="dashboard-sidebar">
+      <a href="index.html" class="sidebar-brand" aria-label="Stackly home">
+        <img src="../images/Stackly_logo.png" alt="Stackly" class="sidebar-brand-logo">
+      </a>
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar"></div>
+        <div class="sidebar-user-info">
+          <h4>Student</h4>
+          <span>student@email.com</span>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#dashboard" class="active"><span class="nav-icon">🏠</span> Dashboard</a>
+        <a href="#my-courses"><span class="nav-icon">📚</span> My Courses</a>
+        <a href="#progress"><span class="nav-icon">📊</span> Progress</a>
+        <a href="#certificates"><span class="nav-icon">🏆</span> Certificates</a>
+        <a href="profile.html"><span class="nav-icon">👤</span> Profile</a>
+        <a href="#" class="logout-btn" style="color: var(--danger);"><span class="nav-icon">🚪</span> Logout</a>
+      </nav>
+    </aside>
+
+    <!-- Mobile sidebar toggle -->
+    <button class="sidebar-toggle" aria-label="Open topics menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+      <!-- Welcome -->
+      <div class="dashboard-welcome">
+        <h2>Welcome back, <span id="dashboard-welcome-name">Student</span>! 👋</h2>
+        <p>Keep up the great work. You're making great progress in your learning journey.</p>
+      </div>
+
+      <!-- Stats -->
+      <div class="dashboard-stats">
+        <div class="dashboard-stat-card">
+          <div class="stat-icon" style="background:#eff6ff; color:#3b82f6;">📚</div>
+          <div class="stat-value" id="stat-enrolled">0</div>
+          <div class="stat-label">Enrolled Courses</div>
+        </div>
+        <div class="dashboard-stat-card">
+          <div class="stat-icon" style="background:#dcfce7; color:#16a34a;">✅</div>
+          <div class="stat-value" id="stat-completed">0</div>
+          <div class="stat-label">Completed</div>
+        </div>
+        <div class="dashboard-stat-card">
+          <div class="stat-icon" style="background:#fef3c7; color:#d97706;">⏱️</div>
+          <div class="stat-value" id="stat-hours">0</div>
+          <div class="stat-label">Hours Learned</div>
+        </div>
+        <div class="dashboard-stat-card">
+          <div class="stat-icon" style="background:#fce7f3; color:#db2777;">🏆</div>
+          <div class="stat-value" id="stat-certs">0</div>
+          <div class="stat-label">Certificates</div>
+        </div>
+      </div>
+
+      <!-- My Courses -->
+      <div class="dashboard-section" id="my-courses">
+        <div class="dashboard-section-header">
+          <h3>My Courses</h3>
+        </div>
+        <div id="enrolled-courses-list"></div>
+      </div>
+
+      <!-- Recent Activity -->
+      <div class="dashboard-section" id="recent-activity">
+        <div class="dashboard-section-header">
+          <h3>Recent Activity</h3>
+        </div>
+        <div class="activity-list" id="activity-list"></div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal will be injected by JS -->
+
+  <script src="js/script.js"></script>
+</body>
+</html>
