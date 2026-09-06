@@ -269,7 +269,7 @@ const Auth = {
     return !!this.getCurrentUser();
   },
 
-  login(email, password) {
+  login(email, password, role = 'student') {
     const users = JSON.parse(localStorage.getItem('ls_users') || '[]');
     const user = users.find(u => u.email === email && u.password === password);
     if (user) {
@@ -283,7 +283,7 @@ const Auth = {
       email,
       password,
       phone: '',
-      role: 'student',
+      role,
       bio: 'Passionate learner on LearnSphere',
       enrolledCourses: [],
       completedCourses: [],
@@ -985,12 +985,14 @@ function initLoginPage() {
 
     const email = document.getElementById('login-email');
     const password = document.getElementById('login-password');
+    const role = document.getElementById('login-role');
     const emailErr = document.getElementById('email-error');
     const passErr = document.getElementById('password-error');
+    const roleErr = document.getElementById('role-error');
 
     // Reset
-    [email, password].forEach(el => el.classList.remove('error'));
-    [emailErr, passErr].forEach(el => el.classList.remove('visible'));
+    [email, password, role].forEach(el => el.classList.remove('error'));
+    [emailErr, passErr, roleErr].forEach(el => el.classList.remove('visible'));
 
     // Validate email
     if (!email.value.trim()) {
@@ -1008,9 +1010,16 @@ function initLoginPage() {
       valid = false;
     }
 
+    if (!role.value) {
+      role.classList.add('error');
+      roleErr.textContent = 'Please select your role';
+      roleErr.classList.add('visible');
+      valid = false;
+    }
+
     if (!valid) return;
 
-    const result = Auth.login(email.value.trim(), password.value);
+    const result = Auth.login(email.value.trim(), password.value, role.value);
     if (result.success) {
       showNotification('Login successful! Redirecting...', 'success');
       setTimeout(() => window.location.href = 'dashboard.html', 1000);
