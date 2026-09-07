@@ -7,6 +7,7 @@ const coursesData = [
   {
     id: 1,
     title: "HTML & CSS Fundamentals",
+    image: "images/course-html.webp",
     slug: "html-css-fundamentals",
     category: "Web Development",
     level: "Beginner",
@@ -35,6 +36,7 @@ const coursesData = [
   {
     id: 2,
     title: "JavaScript for Beginners",
+    image: "images/course-javascript.webp",
     slug: "javascript-beginners",
     category: "Web Development",
     level: "Beginner",
@@ -63,6 +65,7 @@ const coursesData = [
   {
     id: 3,
     title: "Python Programming Masterclass",
+    image: "images/course-python.webp",
     slug: "python-programming",
     category: "Programming",
     level: "Beginner",
@@ -91,6 +94,7 @@ const coursesData = [
   {
     id: 4,
     title: "Full Stack Web Development",
+    image: "images/course-fullstack.webp",
     slug: "web-development",
     category: "Web Development",
     level: "Intermediate",
@@ -119,6 +123,7 @@ const coursesData = [
   {
     id: 5,
     title: "UI/UX Design Principles",
+    image: "images/course-uiux.webp",
     slug: "uiux-design",
     category: "Design",
     level: "Beginner",
@@ -147,6 +152,7 @@ const coursesData = [
   {
     id: 6,
     title: "Data Science with Python",
+    image: "images/course-datascience.webp",
     slug: "data-science",
     category: "Data Science",
     level: "Intermediate",
@@ -175,6 +181,7 @@ const coursesData = [
   {
     id: 7,
     title: "Machine Learning A-Z",
+    image: "images/course-machinelearning.webp",
     slug: "machine-learning",
     category: "Data Science",
     level: "Advanced",
@@ -203,6 +210,7 @@ const coursesData = [
   {
     id: 8,
     title: "Digital Marketing Mastery",
+    image: "images/course-marketing.webp",
     slug: "digital-marketing",
     category: "Marketing",
     level: "Beginner",
@@ -231,6 +239,7 @@ const coursesData = [
   {
     id: 9,
     title: "Database Fundamentals",
+    image: "images/course-database.webp",
     slug: "database-fundamentals",
     category: "Programming",
     level: "Beginner",
@@ -717,7 +726,7 @@ function initCoursesPage() {
       <div class="course-card">
         <div class="course-card-image">
           <div class="course-image-placeholder" style="background: linear-gradient(135deg, ${course.color}, ${course.color}dd);">
-            <span style="font-size:3.5rem;">${course.icon}</span>
+            <img src="${course.image}" alt="${course.title}" class="course-learning-image" onerror="this.onerror=null;this.src='images/course-html.webp';">
           </div>
           <span class="course-badge">${course.badge}</span>
           <span class="course-price-badge">$${course.price}</span>
@@ -917,7 +926,7 @@ function renderRelatedCourses(container, courses) {
     <div class="course-card">
       <div class="course-card-image">
         <div class="course-image-placeholder" style="background: linear-gradient(135deg, ${course.color}, ${course.color}dd);">
-          <span style="font-size:3rem;">${course.icon}</span>
+          <img src="${course.image}" alt="${course.title}" class="course-learning-image" onerror="this.onerror=null;this.src='images/course-html.webp';">
         </div>
         <span class="course-price-badge">$${course.price}</span>
       </div>
@@ -948,7 +957,7 @@ function initHomePage() {
       <div class="course-card">
         <div class="course-card-image">
           <div class="course-image-placeholder" style="background: linear-gradient(135deg, ${course.color}, ${course.color}dd);">
-            <span style="font-size:3.5rem;">${course.icon}</span>
+            <img src="${course.image}" alt="${course.title}" class="course-learning-image" onerror="this.onerror=null;this.src='images/course-html.webp';">
           </div>
           <span class="course-badge">${course.badge}</span>
           <span class="course-price-badge">$${course.price}</span>
@@ -1249,7 +1258,7 @@ function initDashboardPage() {
           <div class="enrolled-course-card">
             <div class="enrolled-course-image">
               <div class="course-image-placeholder" style="background: linear-gradient(135deg, ${course.color}, ${course.color}dd);">
-                <span>${course.icon}</span>
+                <img src="${course.image}" alt="${course.title}" class="course-learning-image" onerror="this.onerror=null;this.src='images/course-html.webp';">
               </div>
             </div>
             <div class="enrolled-course-info">
@@ -1327,7 +1336,7 @@ function renderDashboardTopic(topic) {
 
   const views = {
     'my-courses': `<div class="topic-heading"><span class="section-badge">Learning Library</span><h1>My Courses</h1><p>Review your enrolled courses and progress.</p></div><div class="topic-grid"><article class="topic-card wide"><h3>My Learning Progress</h3><div class="topic-list"><div class="topic-list-item"><div><strong>Modern Web Development</strong><div class="progress-track"><div class="progress-fill" style="width:72%"></div></div><small>72% complete · 4 lessons left</small></div></div><div class="topic-list-item"><div><strong>Python for Beginners</strong><div class="progress-track"><div class="progress-fill" style="width:38%"></div></div><small>38% complete · 9 lessons left</small></div></div></div></article><article class="topic-card"><h3>Filter Courses</h3><form class="topic-form"><label>Category<select><option>All categories</option><option>Development</option><option>Design</option></select></label><label>Search<input type="search" placeholder="Search enrolled courses"></label><button class="btn btn-primary" type="button">Apply Filter</button></form></article></div>`,
-    progress: `<div class="topic-hero"><div><span class="section-badge">Your Analytics</span><h1>Learning Progress</h1><p>Track your time and course completion.</p></div><img class="topic-image" src="images/instructor.jpg" alt="Instructor teaching students"></div><div class="topic-grid"><article class="topic-card"><h3>Completion Overview</h3><div class="pie-chart"></div><div class="chart-legend"><span>Completed · 62%</span><span>In progress · 20%</span><span>Not started · 18%</span></div></article><article class="topic-card"><h3>Weekly Goal</h3><form class="topic-form"><label>Hours this week<input type="number" value="8"></label><label>Focus area<select><option>Web Development</option><option>Python</option></select></label><button class="btn btn-primary" type="button">Update Goal</button></form></article></div>`,
+    progress: `<div class="topic-hero"><div><span class="section-badge">Your Analytics</span><h1>Learning Progress</h1><p>Track your time and course completion.</p></div><img class="topic-image" src="images/instructor.webp" alt="Instructor teaching students"></div><div class="topic-grid"><article class="topic-card"><h3>Completion Overview</h3><div class="pie-chart"></div><div class="chart-legend"><span>Completed · 62%</span><span>In progress · 20%</span><span>Not started · 18%</span></div></article><article class="topic-card"><h3>Weekly Goal</h3><form class="topic-form"><label>Hours this week<input type="number" value="8"></label><label>Focus area<select><option>Web Development</option><option>Python</option></select></label><button class="btn btn-primary" type="button">Update Goal</button></form></article></div>`,
     certificates: `<div class="topic-heading"><span class="section-badge">Achievements</span><h1>Certificates</h1><p>Your completed learning achievements.</p></div><div class="topic-grid"><article class="topic-card certificate-card"><div class="certificate-preview-border"><div class="certificate-badge">🏆</div><span class="section-badge">LearnSphere Certificate</span><h2>Certificate of Achievement</h2><h3>HTML & CSS Essentials</h3><p>Successfully completed this course</p><strong>Issued August 2026</strong><small>Certificate ID: LS-2048</small></div></article><article class="topic-card certificate-card"><div class="certificate-preview-border"><div class="certificate-badge">🎨</div><span class="section-badge">LearnSphere Certificate</span><h2>Certificate of Achievement</h2><h3>UI Design Foundations</h3><p>Successfully completed this course</p><strong>Issued July 2026</strong><small>Certificate ID: LS-1982</small></div></article></div>`,
     assignments: `<div class="topic-heading"><span class="section-badge">Practice Zone</span><h1>Assignments</h1><p>Manage your tasks and submissions here.</p></div><div class="topic-grid"><article class="topic-card wide"><h3>Upcoming Work</h3><div class="topic-list"><div class="topic-list-item"><div><strong>Build a Responsive Landing Page</strong><br><small>Web Development · Due tomorrow</small></div><span class="section-badge">In progress</span></div><div class="topic-list-item"><div><strong>Python Data Cleaning Exercise</strong><br><small>Python · Due Friday</small></div><span class="section-badge">Not started</span></div></div></article><article class="topic-card"><h3>Submit Assignment</h3><form class="topic-form"><label>Course<select><option>Modern Web Development</option><option>Python for Beginners</option></select></label><label>Title<input type="text" placeholder="Assignment title"></label><label>Upload file<input type="file"></label><button class="btn btn-primary" type="button">Save Draft</button></form></article></div>`,
     calendar: `<div class="topic-heading"><span class="section-badge">Plan Ahead</span><h1>Study Calendar</h1><p>Plan sessions and upcoming deadlines.</p></div><div class="topic-grid"><article class="topic-card wide"><h3>September 2026</h3><div class="calendar-grid"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span><span>1</span><span class="has-event">2</span><span>3</span><span>4</span><span class="has-event">5</span><span>6</span><span>7</span><span>8</span><span>9</span><span class="has-event">10</span><span>11</span><span>12</span><span>13</span><span>14</span></div></article><article class="topic-card"><h3>Add Study Event</h3><form class="topic-form"><label>Event name<input type="text" placeholder="React practice"></label><label>Date<input type="date"></label><label>Reminder<select><option>15 minutes before</option><option>1 hour before</option></select></label><button class="btn btn-primary" type="button">Add Event</button></form></article></div>`,
