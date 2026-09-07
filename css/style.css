@@ -1977,6 +1977,8 @@ p {
 .sidebar-nav a:hover {
   background: var(--gray-50);
   color: var(--text-primary);
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.08);
 }
 
 .sidebar-nav a.active {
@@ -2059,11 +2061,17 @@ p {
   border-radius: var(--radius-md);
   padding: 24px;
   border: 1px solid var(--border-color);
-  transition: var(--transition);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .dashboard-stat-card:hover {
+  transform: translateY(-6px);
   box-shadow: var(--shadow-md);
+  border-color: var(--primary-light);
+}
+
+.dashboard-stat-card:hover .stat-icon {
+  transform: scale(1.12) rotate(-5deg);
 }
 
 .dashboard-stat-card .stat-icon {
@@ -2075,6 +2083,7 @@ p {
   justify-content: center;
   font-size: 1.5rem;
   margin-bottom: 12px;
+  transition: transform 0.25s ease;
 }
 
 .dashboard-stat-card .stat-value {
@@ -2112,11 +2121,13 @@ p {
   display: flex;
   gap: 20px;
   align-items: center;
-  transition: var(--transition);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .enrolled-course-card:hover {
+  transform: translateY(-4px);
   box-shadow: var(--shadow-md);
+  border-color: var(--primary-light);
 }
 
 .enrolled-course-image {
@@ -2195,6 +2206,12 @@ p {
   align-items: center;
   gap: 12px;
   border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.2s ease, padding-left 0.2s ease;
+}
+
+.activity-item:hover {
+  background: var(--gray-50);
+  padding-left: 28px;
 }
 
 .activity-item:last-child {
