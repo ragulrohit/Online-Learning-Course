@@ -497,6 +497,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initBackToTop();
   updateNavAuth();
   initCustomSelects();
+  initCustomDatePickers();
   new MutationObserver(records => {
     const removedSelect = records.some(record => Array.from(record.removedNodes).some(node =>
       node.nodeType === Node.ELEMENT_NODE &&
@@ -504,6 +505,7 @@ document.addEventListener('DOMContentLoaded', function() {
     ));
     if (removedSelect) closeCustomDropdowns();
     initCustomSelects();
+    initCustomDatePickers();
   }).observe(document.body, {
     childList: true,
     subtree: true
@@ -608,6 +610,18 @@ function initCustomSelects(root = document) {
       menu.style.maxHeight = `${Math.max(120, (openAbove ? spaceAbove : spaceBelow))}px`;
       menu.style.top = openAbove ? 'auto' : `${rect.bottom + 6}px`;
       menu.style.bottom = openAbove ? `${window.innerHeight - rect.top + 6}px` : 'auto';
+      requestAnimationFrame(() => {
+        const menuRect = menu.getBoundingClientRect();
+        const safeLeft = Math.min(Math.max(12, rect.left), Math.max(12, window.innerWidth - menuRect.width - 12));
+        const preferredTop = rect.bottom + 6;
+        const aboveTop = rect.top - menuRect.height - 6;
+        const safeTop = preferredTop + menuRect.height <= window.innerHeight - 12
+          ? preferredTop
+          : (aboveTop >= 12 ? aboveTop : Math.max(12, window.innerHeight - menuRect.height - 12));
+        menu.style.left = `${safeLeft}px`;
+        menu.style.top = `${safeTop}px`;
+        menu.style.bottom = 'auto';
+      });
       wrapper.classList.add('open');
       trigger.setAttribute('aria-expanded', 'true');
       wrapper._customMenu = menu;
@@ -618,10 +632,96 @@ function initCustomSelects(root = document) {
 function closeCustomDropdowns() {
   // Also remove menus left behind when dynamic page content is re-rendered.
   document.querySelectorAll('.custom-select-menu').forEach(menu => menu.remove());
+  document.querySelectorAll('.custom-date-menu').forEach(menu => menu.remove());
   document.querySelectorAll('.custom-select.open').forEach(wrapper => {
     wrapper.classList.remove('open');
     wrapper.querySelector('.custom-select-trigger')?.setAttribute('aria-expanded', 'false');
     wrapper._customMenu = null;
+  });
+  document.querySelectorAll('.custom-date-select.open').forEach(wrapper => {
+    wrapper.classList.remove('open');
+    wrapper.querySelector('.custom-date-trigger')?.setAttribute('aria-expanded', 'false');
+    wrapper._customMenu = null;
+  });
+}
+
+// Native date pickers can escape a narrow mobile viewport, so render a small
+// viewport-aware calendar while keeping the original input for form handling.
+function initCustomDatePickers(root = document) {
+  root.querySelectorAll('input[type="date"]:not([data-custom-date])').forEach(input => {
+    input.dataset.customDate = 'true';
+    const wrapper = document.createElement('div');
+    wrapper.className = 'custom-date-select';
+    input.parentNode.insertBefore(wrapper, input);
+    wrapper.appendChild(input);
+
+    const trigger = document.createElement('button');
+    trigger.type = 'button';
+    trigger.className = 'custom-date-trigger';
+    trigger.setAttribute('aria-haspopup', 'dialog');
+    trigger.setAttribute('aria-expanded', 'false');
+    wrapper.appendChild(trigger);
+
+    const formatDate = value => value ? new Date(`${value}T00:00:00`).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) : 'Choose a date';
+    const updateLabel = () => {
+      trigger.textContent = formatDate(input.value);
+      trigger.classList.toggle('placeholder', !input.value);
+    };
+    updateLabel();
+    input.addEventListener('change', updateLabel);
+
+    trigger.addEventListener('click', event => {
+      event.stopPropagation();
+      closeCustomDropdowns();
+      const selected = input.value ? new Date(`${input.value}T00:00:00`) : new Date();
+      const month = new Date(selected.getFullYear(), selected.getMonth(), 1);
+      const menu = document.createElement('div');
+      menu.className = 'custom-date-menu';
+      menu.setAttribute('role', 'dialog');
+      menu.innerHTML = `<div class="custom-date-header"><strong>${month.toLocaleDateString(undefined, { month: 'long', year: 'numeric' })}</strong><button type="button" class="custom-date-close" aria-label="Close calendar">×</button></div><div class="custom-date-weekdays">${['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(day => `<span>${day}</span>`).join('')}</div><div class="custom-date-days"></div>`;
+      document.body.appendChild(menu);
+      const days = menu.querySelector('.custom-date-days');
+      const firstDay = month.getDay();
+      const lastDay = new Date(month.getFullYear(), month.getMonth() + 1, 0).getDate();
+      for (let i = 0; i < firstDay; i += 1) days.insertAdjacentHTML('beforeend', '<span></span>');
+      for (let day = 1; day <= lastDay; day += 1) {
+        const value = `${month.getFullYear()}-${String(month.getMonth() + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.textContent = day;
+        button.className = value === input.value ? 'selected' : '';
+        button.addEventListener('click', () => {
+          input.value = value;
+          input.dispatchEvent(new Event('change', { bubbles: true }));
+          closeCustomDropdowns();
+        });
+        days.appendChild(button);
+      }
+      menu.querySelector('.custom-date-close').addEventListener('click', closeCustomDropdowns);
+      const rect = trigger.getBoundingClientRect();
+      const width = Math.min(292, window.innerWidth - 24);
+      const left = Math.min(Math.max(12, rect.left), window.innerWidth - width - 12);
+      const below = window.innerHeight - rect.bottom - 12;
+      menu.style.width = `${width}px`;
+      menu.style.left = `${left}px`;
+      menu.style.top = below >= 280 || below >= rect.top ? `${rect.bottom + 6}px` : 'auto';
+      menu.style.bottom = menu.style.top === 'auto' ? `${window.innerHeight - rect.top + 6}px` : 'auto';
+      requestAnimationFrame(() => {
+        const menuRect = menu.getBoundingClientRect();
+        const safeLeft = Math.min(Math.max(12, rect.left), Math.max(12, window.innerWidth - menuRect.width - 12));
+        const preferredTop = rect.bottom + 6;
+        const aboveTop = rect.top - menuRect.height - 6;
+        const safeTop = preferredTop + menuRect.height <= window.innerHeight - 12
+          ? preferredTop
+          : (aboveTop >= 12 ? aboveTop : Math.max(12, window.innerHeight - menuRect.height - 12));
+        menu.style.left = `${safeLeft}px`;
+        menu.style.top = `${safeTop}px`;
+        menu.style.bottom = 'auto';
+      });
+      wrapper.classList.add('open');
+      trigger.setAttribute('aria-expanded', 'true');
+      wrapper._customMenu = menu;
+    });
   });
 }
 
